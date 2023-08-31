@@ -1,0 +1,19 @@
+%{
+#include<stdio.h>
+int c=0;
+%}
+
+%%
+"//"(.)*\n {c++;}
+"/*"(.)*"*/" {c++; }
+. {}
+%%
+int yywrap(){
+return c;
+}
+int main(){
+printf("enter code: \n ");
+yylex();
+printf("Number of comments: %d\n",c);
+return 0;
+}

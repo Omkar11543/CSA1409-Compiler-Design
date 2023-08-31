@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+	char g1[100], g2[100], g3[100],f1,f2;
+	int i, j,c, dash,k,l,m,n,o;
+	printf("Enter the grammar: \n");
+	scanf("%s", &g1);
+	scanf("%s", &g2);
+	scanf("%s", &g3);
+	for (j = 0; g1[j] != '>'; j++);
+    j++;
+    for (k = 0; g2[k] != '>'; k++);
+    k++;
+    for (l = 0; g3[l] != '>'; l++);
+    l++;
+    if(g1[j] >= 'A' && g1[j] <= 'Z'){
+		if(g1[j]==g2[0] && g2[k]!='e'){
+			
+			g1[j]=g2[k];
+		}
+		else if(g1[j]==g2[0] && g2[k]=='e'){
+			j++;
+		}
+		else if(g1[j]==g3[0] && g3[l]!='e'){
+			g1[j]=g3[l];
+		}
+		else if(g1[j]==g3[0] && g3[l]=='e'){
+			j++;
+		}
+	}
+	for (; g1[m] != '|'; m++);
+	m++; 
+    if (g1[m] >= 'A' && g1[m] <= 'Z'){
+    	if(g1[m]==g2[0] && g2[k]!='e'){
+			g1[m]=g2[k];
+		}
+		else if(g1[j]==g2[0] && g2[k]=='e'){
+			m++;
+		}
+		else if(g1[m]==g3[0] && g3[l]!='e'){
+			g1[m]=g3[l];
+		}
+		else if(g1[m]==g3[0] && g3[l]=='e'){
+			m++;
+		}
+		
+	}
+	printf("First(%c)=%c,%c \n",g1[0],g1[j], g1[m]);
+	printf("First(%c)={ %c }\n",g2[0], g2[3]);
+	printf("First(%c)={ %c }\n",g3[0], g3[3]);
+	return 0;
+}
